@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Message #{{ message.pk }} | Messenger{% endblock %}
+
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="{% url 'messenger:message-list' %}" class="text-decoration-none">Messages</a></li>
+          <li class="breadcrumb-item active" aria-current="page">#{{ message.pk }}</li>
+        </ol>
+      </nav>
+
+      <div class="card border-0 shadow-sm">
+        <div class="card-header bg-body d-flex align-items-center justify-content-between py-3">
+          <span class="badge rounded-pill bg-primary-subtle text-primary-emphasis border border-primary-subtle">#{{ message.pk }}</span>
+          <small class="text-body-secondary">{{ message.created_at|date:"M d, Y H:i" }}</small>
+        </div>
+        <div class="card-body p-4">
+          <p class="card-text fs-5 text-break mb-0">{{ message.text|linebreaksbr }}</p>
+        </div>
+        <div class="card-footer bg-body py-3">
+          <a href="{% url 'messenger:message-list' %}" class="btn btn-outline-secondary btn-sm">&larr; Back to messages</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

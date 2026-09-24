@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render
 from django.views import View
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, DetailView
 
 from messenger.models import Message
 
@@ -53,3 +53,6 @@ class MessageListView(ListView):
     model = Message
 
 
+# --------------------------Detail View ================================
+class MessageDetailView(DetailView):
+    model = Message
