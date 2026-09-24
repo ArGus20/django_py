@@ -3,7 +3,7 @@
 {% block content %}
   <h1>Message List</h1>
   <ul>
-    {% for message in message_list %}
+    {% for message in object_list %}
       <li>{{ message.text }}</li>
     {% endfor %}
   </ul>
