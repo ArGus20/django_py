@@ -1,10 +1,39 @@
 {% extends "base.html" %}
 
+{% block title %}Messages | Messenger{% endblock %}
+
 {% block content %}
-  <h1>Message List</h1>
-  <ul>
-    {% for message in object_list %}
-      <li>{{ message.text }}</li>
-    {% endfor %}
-  </ul>
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="d-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 fw-semibold mb-0">Messages</h1>
+        <span class="badge rounded-pill text-bg-primary fs-6">{{ object_list|length }}</span>
+      </div>
+
+      {% if object_list %}
+        <div class="list-group shadow-sm">
+          {% for message in object_list %}
+            <div class="list-group-item py-3">
+              <div class="d-flex gap-3">
+                <div class="flex-shrink-0">
+                  <span class="badge rounded-pill bg-primary-subtle text-primary-emphasis border border-primary-subtle">#{{ message.pk }}</span>
+                </div>
+                <div class="flex-grow-1">
+                  <p class="mb-1 text-break">{{ message.text|linebreaksbr }}</p>
+                  <small class="text-body-secondary">{{ message.created_at|date:"M d, Y H:i" }}</small>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="card border-0 shadow-sm text-center py-5">
+          <div class="card-body">
+            <h2 class="h5 mb-2">No messages yet</h2>
+            <p class="text-body-secondary mb-0">Messages will appear here once they are created.</p>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
 {% endblock %}
