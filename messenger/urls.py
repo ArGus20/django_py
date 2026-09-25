@@ -2,6 +2,7 @@ from django.urls import path
 
 from messenger.views import HomeView, MessageListView, MessageDetailView
 
+
 app_name = 'messenger'
 
 urlpatterns = [
